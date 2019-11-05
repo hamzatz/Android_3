@@ -11,53 +11,40 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.android3.R;
+import com.example.android3.data.entity.OnBoardEntity;
+
+import java.util.ArrayList;
 
 public class OnBoardAdapter extends PagerAdapter {
 
     private TextView textView;
+    private ArrayList<OnBoardEntity>resourse;
 
-    public OnBoardAdapter() {
-        this.context = context;
+
+    public OnBoardAdapter(ArrayList<OnBoardEntity> resourse) {
+        this.resourse =resourse;
+
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        context=container.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_view_pager, null);
-        ImageView imageView = view.findViewById(R.id.image_view);
-        textView=view.findViewById(R.id.text_view);
-        switch (position) {
-            case 0:
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.step));
-                textView.setText("Here you are may learn!");
-                break;
-            case 1:
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.update));
-                textView.setText("Here you are may update!");
-                break;
-            case 2:
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.delete));
-                textView.setText("Here you are may delete!");
-                break;
-            case 3:
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.thanks));
-                textView.setText("Thanks that you are with us!");
-                break;
-            default:
-                imageView.setImageDrawable(context.getResources().getDrawable((position)));
-        }
-        container.addView(view);
 
+        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_view_pager, null);
+        ImageView imageView = view.findViewById(R.id.image_view);
+        textView= view.findViewById(R.id.text_view);
+        imageView.setImageDrawable(container.getContext().getResources().getDrawable(resourse.get(position).getImg()));
+        textView.setText(resourse.get(position).getTitle());
+        container.addView(view);
         return view;
     }
 
-    private Context context;
+
 
 
     @Override
     public int getCount() {
-        return 4;
+        return resourse.size();
     }
 
     @Override

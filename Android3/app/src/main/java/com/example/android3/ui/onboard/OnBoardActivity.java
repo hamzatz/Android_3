@@ -16,7 +16,10 @@ import android.widget.Button;
 
 
 import com.example.android3.R;
+import com.example.android3.data.entity.OnBoardEntity;
 import com.example.android3.ui.main.MainActivity;
+
+import java.util.ArrayList;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -33,45 +36,37 @@ public class OnBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboard);
 
-        boardAdapter= new OnBoardAdapter();
-        viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(boardAdapter);
-        circleIndicator = findViewById(R.id.circle);
-        circleIndicator.setViewPager(viewPager);
-        button= findViewById(R.id.btn_next);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-            }
-        });
 
-        onNextClick();
+
         initViews();
-
+        setupViewPager();
+        onNextClick();
 
     }
-    public static void start(Context context){
+
+    public static void start(Context context) {
         context.startActivity(new Intent(context, OnBoardActivity.class));
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void initViews(){
+    private void initViews() {
 
-
-        toolbar= findViewById(R.id.tooolbarTransparent);
+        circleIndicator = findViewById(R.id.circle);
+        button = findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.view_pager);
+        toolbar = findViewById(R.id.tooolbarTransparent);
         setSupportActionBar(toolbar);
 
     }
 
-    public void onNextClick(){
+    public void onNextClick() {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -80,7 +75,7 @@ public class OnBoardActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if(viewPager.getCurrentItem() == 3){
+                if (viewPager.getCurrentItem() == 3) {
                     button.setText("Finish");
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -88,8 +83,7 @@ public class OnBoardActivity extends AppCompatActivity {
                             MainActivity.start(OnBoardActivity.this);
                         }
                     });
-                }
-                else {
+                } else {
                     button.setText("Next");
                 }
             }
@@ -104,11 +98,40 @@ public class OnBoardActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.skip:
                 MainActivity.start(this);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+         private  void setupViewPager() {
+
+
+        boardAdapter= new OnBoardAdapter(getResourse());
+
+
+        viewPager.setAdapter(boardAdapter);
+
+        circleIndicator.setViewPager(viewPager);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            }
+        });
+
+    }
+    private ArrayList<OnBoardEntity> getResourse(){
+        ArrayList<OnBoardEntity> list = new ArrayList<>();
+        list.add(new OnBoardEntity("Here you are my learn!",R.drawable.step));
+        list.add(new OnBoardEntity("Here you are my update!",R.drawable.update));
+        list.add(new OnBoardEntity("Here you are my delete!",R.drawable.delete));
+        list.add(new OnBoardEntity("Thanks that you are with us!",R.drawable.thanks));
+        return list;
     }
 }
