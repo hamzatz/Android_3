@@ -18,7 +18,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
         childFragments = new Fragment[]{
                 new WeatherFragment(),
-                new MapFragment()
+                new MapFragment(),
+
         };
     }
 
@@ -31,6 +32,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         {
             case 0:
                 return new WeatherFragment();
+
 
             case 1:
                 return new MapFragment();
@@ -52,9 +54,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 title = "Weather";
                 break;
+
             case 1:
-                title = "Map";
-                break;
+                title="Map";
         }
         return title;
     }

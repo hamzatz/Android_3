@@ -9,6 +9,7 @@
 
 
 
+
     </style>
 
     <style name="label">
@@ -21,4 +22,15 @@
     </item>
     </style>
 
-</resources>
+    <style name="TextViewBig">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+    </style>
+
+
+
+    </resources>

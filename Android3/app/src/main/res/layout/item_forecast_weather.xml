@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingTop="8dp"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_shadow"
+    >
+
+    <ImageView
+        android:id="@+id/image_sun"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_littlecolud"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/gradus"
+        tools:text="Today"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/gradu2"
+        tools:text="30"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+
+        android:id="@+id/gradus3"
+        tools:text="25"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

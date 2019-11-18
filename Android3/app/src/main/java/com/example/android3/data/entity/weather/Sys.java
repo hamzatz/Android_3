@@ -5,9 +5,9 @@ public class Sys {
 
         private String country;
 
-        private String sunrise;
+        private double sunrise;
 
-        private String sunset;
+        private double sunset;
 
         private String id;
 
@@ -25,22 +25,22 @@ public class Sys {
             this.country = country;
         }
 
-        public String getSunrise ()
+        public double getSunrise ()
         {
             return sunrise;
         }
 
-        public void setSunrise (String sunrise)
+        public void setSunrise (double sunrise)
         {
             this.sunrise = sunrise;
         }
 
-        public String getSunset ()
+        public double getSunset ()
         {
             return sunset;
         }
 
-        public void setSunset (String sunset)
+        public void setSunset (double sunset)
         {
             this.sunset = sunset;
         }

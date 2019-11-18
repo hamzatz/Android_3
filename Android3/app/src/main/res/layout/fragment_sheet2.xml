@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+
+    <androidx.core.widget.NestedScrollView
+
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:behavior_peekHeight="20dp"
+        android:background="@color/colorWhite"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/imageView_btsh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#000C0B0B"
+                app:srcCompat="@android:drawable/button_onoff_indicator_off"
+                tools:contentDescription="TODO" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:background="@android:color/white"
+                android:layout_width="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/fragment_forecast"
+                tools:itemCount="5"
+                android:layout_height="match_parent"/>
+
+</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

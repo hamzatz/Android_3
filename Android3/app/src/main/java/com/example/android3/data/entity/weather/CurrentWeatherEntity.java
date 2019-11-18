@@ -11,7 +11,7 @@ public class CurrentWeatherEntity {
 
         private String visibility;
 
-        private List<Weather> weather = null;
+        private List<Weather> weather;
 
         private String name;
 

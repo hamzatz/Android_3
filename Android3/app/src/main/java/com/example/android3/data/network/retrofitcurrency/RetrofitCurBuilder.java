@@ -1,6 +1,6 @@
-package com.example.android3.data.network;
+package com.example.android3.data.network.retrofitcurrency;
 
-import android.os.Build;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,35 +8,23 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.android3.BuildConfig.WEATHER_BASE_URL;
+import static com.example.android3.BuildConfig.CURRENCY_BASE_URL;
 
-public class RetrofitBuilder {
 
-    public static RetrofitService instance;
+public class RetrofitCurBuilder {
+
+    public static RetrofitServiceCur instance;
     private  static OkHttpClient client;
 
-    public static  RetrofitService getRetrofitService(){
+    public static  RetrofitServiceCur getRetrofitServiceCur(){
 
         if (instance == null){
-            instance=buildRetrofit();
-
+            instance=buildRetrofitCur();
         }
 
         return instance;
     }
 
-
-
-
-    private static RetrofitService buildRetrofit() {
-
-        return new Retrofit.Builder()
-                .baseUrl(WEATHER_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(getClient())
-                .build()
-                .create(RetrofitService.class);
-    }
     private static  OkHttpClient getClient(){
         if (client == null) {
             client = okhttpBuilder();
@@ -56,4 +44,15 @@ public class RetrofitBuilder {
                 .writeTimeout(30,TimeUnit.SECONDS)
                 .build();
     }
+
+    private static RetrofitServiceCur buildRetrofitCur(){
+        return new Retrofit.Builder()
+                .baseUrl(CURRENCY_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(getClient())
+                .build()
+                .create(RetrofitServiceCur.class);
+    }
+
+
 }

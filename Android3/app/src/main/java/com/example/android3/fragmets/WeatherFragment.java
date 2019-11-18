@@ -3,23 +3,25 @@ package com.example.android3.fragmets;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android3.R;
+import com.example.android3.data.entity.forecast.WeatherForecast;
 import com.example.android3.data.entity.weather.CurrentWeatherEntity;
-import com.example.android3.data.network.RetrofitBuilder;
+import com.example.android3.data.network.retrofitweather.RetrofitBuilder;
+import com.example.android3.fragmets.adapter.ForecasrAdapter;
+import com.example.android3.ui.base.BaseFragment;
+import com.example.android3.utils.DateTimeHelper;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,48 +31,68 @@ import static com.example.android3.BuildConfig.WEATHER_KEY;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WeatherFragment extends Fragment {
+public class WeatherFragment extends BaseFragment {
 
-   private TextView  address, updated, status,
-            temp, tempmin, tempmax, sunrise,
-            sunset, wind, pressure, humidity;
 
+
+
+   private ForecasrAdapter adapter;
+
+   @BindView(R.id.address)
+   TextView address;
+   @BindView(R.id.updated_at)
+   TextView updated;
+   @BindView(R.id.status)
+   TextView status;
+    @BindView(R.id.temp)
+    TextView temp;
+    @BindView(R.id.temp_min)
+    TextView tempmin;
+    @BindView(R.id.temp_max)
+    TextView tempmax;
+    @BindView(R.id.sunrise)
+    TextView  sunrise;
+    @BindView(R.id.sunset)
+    TextView sunset;
+    @BindView(R.id.wind)
+    TextView wind;
+    @BindView(R.id.pressure)
+    TextView pressure;
+    @BindView(R.id.humidity)
+    TextView humidity;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
     public WeatherFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_weather, container, false);
-
-
-        address =view.findViewById(R.id.address);
-        updated = view.findViewById(R.id.updated_at);
-        status = view.findViewById(R.id.status);
-        temp = view.findViewById(R.id.temp);
-        tempmin = view.findViewById(R.id.temp_min);
-        tempmax = view.findViewById(R.id.temp_max);
-        sunrise = view.findViewById(R.id.sunrise);
-        sunset = view.findViewById(R.id.sunset);
-        wind = view.findViewById(R.id.wind);
-        pressure = view.findViewById(R.id.pressure);
-        humidity = view.findViewById(R.id.humidity);
-
-        showCurrentWeather();
-        return view;
+    protected int getViewLayout() {
+        return R.layout.fragment_weather;
     }
 
-    public void showCurrentWeather() {
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initViewsWeather(view);
+        initAdapter();
+        showCurrentWeather();
+        initForecast();
+    }
+
+    private void showCurrentWeather() {
 
         RetrofitBuilder.getRetrofitService().getCurrentWeather("Bishkek", WEATHER_KEY, "metric")
                 .enqueue(new Callback<CurrentWeatherEntity>() {
                     @Override
                     public void onResponse(Call<CurrentWeatherEntity> call, Response<CurrentWeatherEntity> response) {
-                        Log.d("ololo", "weather");
+                        Log.d("ololo", response.toString());
                         CurrentWeatherEntity data = response.body();
 
                         pressure.setText(data.getMain().getPressure());
@@ -79,29 +101,50 @@ public class WeatherFragment extends Fragment {
                         tempmin.setText(data.getMain().getTemp_min());
                         humidity.setText(data.getMain().getHumidity());
                         wind.setText(data.getWind().getSpeed());
-                        updated.setText(getCurrentTime());
+                        updated.setText(DateTimeHelper.getCurrentDateTime());
                         address.setText(data.getName());
                         status.setText(data.getWeather().get(0).getDescription());
-                        sunrise.setText(data.getSys().getSunrise());
-                        sunset.setText(data.getSys().getSunset());
-
-
+                        sunrise.setText(DateTimeHelper.parseDateToTime(data.getSys().getSunrise()));
+                        sunset.setText(DateTimeHelper.parseDateToTime(data.getSys().getSunset()));
 
 
                     }
 
                     @Override
                     public void onFailure(Call<CurrentWeatherEntity> call, Throwable t) {
-                        Log.d("ololo", "weather");
+                        Log.d("ololo", t.getMessage());
 
                     }
                 });
 
     }
-    public static String getCurrentTime() {
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        return dateFormat.format(cal.getTime());
+    private void initForecast(){
+      RetrofitBuilder.getRetrofitService().getWeather("Bishkek", WEATHER_KEY, "metric")
+         .enqueue(new Callback<WeatherForecast>() {
+                  @Override
+                    public void onResponse(Call<WeatherForecast> call, Response<WeatherForecast> response) {
+                        if (response.body()!= null){
+                           Toast.makeText(getContext(), "5 days forecast", Toast.LENGTH_LONG).show();
+                           adapter.setItems(response.body().getList());
+
+                       }
+
+                   }
+
+                   @Override
+                   public void onFailure(Call<WeatherForecast> call, Throwable t) {
+          Log.d("sdfsdsd", "asdasdsad");                   }
+              });
     }
+
+   private void initAdapter(){
+        adapter = new ForecasrAdapter();
+       recyclerView.setAdapter(adapter);
+   }
+
+public  void  initViewsWeather(View view1){
+
+
+}
     }

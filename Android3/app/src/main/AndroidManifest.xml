@@ -8,6 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:label=""
         android:name=".App"
 
@@ -32,6 +33,8 @@
 
         </activity>
         <activity android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
 
         </activity>

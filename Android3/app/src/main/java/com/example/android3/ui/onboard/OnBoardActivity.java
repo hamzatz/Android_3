@@ -101,6 +101,7 @@ public class OnBoardActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.skip:
                 MainActivity.start(this);
+                overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
                 break;
         }
         return super.onOptionsItemSelected(item);
