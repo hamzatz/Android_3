@@ -14,8 +14,8 @@ public interface RetrofitServiceCur {
 
     Call<Root>getCurrency(
 
-              @Query("access_key") String access,
-              @Query("base") String base
+              @Query("access_key") String access
+
 
     );
 

@@ -119,7 +119,7 @@ public class MapFragment extends Fragment{
 
     public void showCurrency(){
 
-        RetrofitCurBuilder.getRetrofitServiceCur().getCurrency( ACCESS_KEY,"USD").enqueue(new Callback<Root>() {
+        RetrofitCurBuilder.getRetrofitServiceCur().getCurrency( ACCESS_KEY).enqueue(new Callback<Root>() {
             @Override
             public void onResponse(Call<Root> call, Response<Root> response) {
                 Log.e("ololo", response.toString());
