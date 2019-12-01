@@ -1,4 +1,4 @@
-package com.example.android3.fragmets;
+package com.example.android3.ui.fragmets;
 
 
 import android.os.Bundle;
@@ -14,10 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android3.R;
+import com.example.android3.data.entity.forecast.List;
 import com.example.android3.data.entity.forecast.WeatherForecast;
 import com.example.android3.data.network.retrofitweather.RetrofitBuilder;
-import com.example.android3.fragmets.adapter.ForecasrAdapter;
+import com.example.android3.ui.fragmets.adapter.ForecasrAdapter;
 import com.example.android3.ui.base.BaseFragment;
+import com.example.android3.ui.main.Listener;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -29,14 +31,17 @@ import static com.example.android3.BuildConfig.WEATHER_KEY;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ForecastFragment extends BaseFragment {
+public class ForecastFragment extends BaseFragment implements Listener {
 
     @BindView(R.id.gradu2)
             TextView txtDate;
 
     @BindView(R.id.recycler_view)
             RecyclerView recyclerView;
+
     ForecasrAdapter adapter;
+
+    private  Listener listener;
 
 
     public ForecastFragment() {
@@ -85,8 +90,13 @@ public class ForecastFragment extends BaseFragment {
                 });
     }
     private void initAdapter(){
-        adapter = new ForecasrAdapter();
+        adapter = new ForecasrAdapter(listener);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onItemClick(List list) {
+
+
+    }
 }

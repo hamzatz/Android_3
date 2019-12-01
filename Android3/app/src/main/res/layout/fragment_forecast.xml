@@ -7,7 +7,7 @@
     android:paddingEnd="@dimen/margin_big"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/darker_gray"
-    tools:context=".fragmets.ForecastFragment">
+    tools:context=".ui.fragmets.ForecastFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

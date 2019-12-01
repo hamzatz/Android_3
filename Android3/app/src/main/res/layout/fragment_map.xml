@@ -2,14 +2,59 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".fragmets.MapFragment">
-
-<include layout="@layout/fragment_sheet_fragment_currency">
-
-</include>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragmets.MapFragment">
 
 
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/fragment_sheet_fragment_currency"/>
+
+<!--    <androidx.core.widget.NestedScrollView-->
+
+<!--        android:id="@+id/bottom_sheet_cur"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="300dp"-->
+<!--        app:behavior_peekHeight="20dp"-->
+<!--        android:background="@color/cardview_dark_background"-->
+<!--        android:descendantFocusability="blocksDescendants"-->
+<!--        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">-->
+
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@android:color/white"-->
+<!--            android:orientation="vertical"-->
+<!--            >-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView_btsh"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="#000C0B0B"-->
+<!--                app:srcCompat="@android:drawable/button_onoff_indicator_off"-->
+<!--                tools:contentDescription="TODO" />-->
+
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recycler_view_cur"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/colorWhite"-->
+<!--                tools:listitem="@layout/fragment_sheet_fragment_currency" />-->
+
+
+
+<!--&lt;!&ndash;                   <include android:layout="@layout/fragment_sheet_fragment_currency"/>&ndash;&gt;-->
+<!--        </LinearLayout>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>

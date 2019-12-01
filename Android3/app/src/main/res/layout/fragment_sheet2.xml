@@ -35,15 +35,15 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
-                android:background="@android:color/white"
                 android:layout_width="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
                 android:orientation="vertical"
-                tools:listitem="@layout/fragment_forecast"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="5"
-                android:layout_height="match_parent"/>
+                tools:listitem="@layout/fragment_forecast" />
 
-</LinearLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 

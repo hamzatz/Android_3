@@ -1,4 +1,4 @@
-package com.example.android3.fragmets.adapter;
+package com.example.android3.ui.fragmets.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,11 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android3.R;
-import com.example.android3.fragmets.currency.Rates;
+import com.example.android3.ui.fragmets.currency.Rates;
 
 import java.util.ArrayList;
 
 public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder> {
+
     ArrayList<Rates> ratesArrayList;
 
     Context context;
@@ -28,7 +29,8 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
     @NonNull
     @Override
     public CurrencyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_currency_usd,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.fragment_map,parent,false);
+
         return new CurrencyViewHolder(view);
     }
 

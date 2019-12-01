@@ -1,4 +1,4 @@
-package com.example.android3.fragmets.adapter;
+package com.example.android3.ui.fragmets.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +8,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android3.R;
+import com.example.android3.ui.main.Listener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ForecasrAdapter extends RecyclerView.Adapter<ForecastViewHolder> {
+
+    Listener listener;
+
+    public ForecasrAdapter(Listener listener) {
+
+        this.listener= listener;
+
+    }
+
     private List<com.example.android3.data.entity.forecast.List> data = new ArrayList<>();
+
+    public ForecasrAdapter() {
+
+    }
 
 
     @NonNull
@@ -21,7 +35,7 @@ public class ForecasrAdapter extends RecyclerView.Adapter<ForecastViewHolder> {
     public ForecastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_forecast_weather, parent, false);
-        return new ForecastViewHolder(view);
+        return new ForecastViewHolder(view, listener);
     }
 
     @Override

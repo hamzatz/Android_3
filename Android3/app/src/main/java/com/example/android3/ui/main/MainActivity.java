@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.example.android3.R;
 
-import com.example.android3.fragmets.adapter.ViewPagerAdapter;
+import com.example.android3.ui.fragmets.adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 

@@ -1,4 +1,4 @@
-package com.example.android3.fragmets;
+package com.example.android3.ui.fragmets;
 
 
 import android.os.Bundle;
@@ -17,9 +17,11 @@ import com.example.android3.R;
 import com.example.android3.data.entity.forecast.WeatherForecast;
 import com.example.android3.data.entity.weather.CurrentWeatherEntity;
 import com.example.android3.data.network.retrofitweather.RetrofitBuilder;
-import com.example.android3.fragmets.adapter.ForecasrAdapter;
+import com.example.android3.ui.fragmets.adapter.ForecasrAdapter;
 import com.example.android3.ui.base.BaseFragment;
 import com.example.android3.utils.DateTimeHelper;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -37,6 +39,7 @@ public class WeatherFragment extends BaseFragment {
 
 
    private ForecasrAdapter adapter;
+   private ArrayList<CurrentWeatherEntity> currentWeatherEntityArrayList;
 
    @BindView(R.id.address)
    TextView address;

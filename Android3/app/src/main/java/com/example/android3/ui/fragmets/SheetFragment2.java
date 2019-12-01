@@ -1,4 +1,4 @@
-package com.example.android3.fragmets;
+package com.example.android3.ui.fragmets;
 
 
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.android3.R;
 import com.example.android3.data.entity.forecast.WeatherForecast;
 import com.example.android3.data.network.retrofitweather.RetrofitBuilder;
-import com.example.android3.fragmets.adapter.ForecasrAdapter;
+import com.example.android3.ui.fragmets.adapter.ForecasrAdapter;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import retrofit2.Call;

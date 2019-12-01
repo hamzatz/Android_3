@@ -1,4 +1,4 @@
-package com.example.android3.fragmets.adapter;
+package com.example.android3.ui.fragmets.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.android3.fragmets.MapFragment;
-import com.example.android3.fragmets.WeatherFragment;
+import com.example.android3.ui.fragmets.MapFragment;
+import com.example.android3.ui.fragmets.WeatherFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 

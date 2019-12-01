@@ -1,4 +1,4 @@
-package com.example.android3.fragmets.currency;
+package com.example.android3.ui.fragmets.currency;
 
 import java.util.Date;
 
